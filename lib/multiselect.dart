@@ -135,6 +135,15 @@ class DropDownMultiSelect<T> extends StatefulWidget {
 class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState>> {
   @override
   Widget build(BuildContext context) {
+    String text = '';
+    for (final item in widget.selectedValues) {
+      if (text.isEmpty) {
+        text = item.toString();
+      } else {
+        text = text + ', ' + item.toString();
+      }
+    }
+
     return Container(
       child: Stack(
         alignment: Alignment.centerLeft,
@@ -147,11 +156,10 @@ class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState
                   child: Padding(
                     
                     padding: const EdgeInsets.only(right: 20),
-                    child: Text(widget.selectedValues.length > 0
-                        ? widget.selectedValues
-                            .reduce((a, b) => a + widget.separator + b)
+                    child: Text(text.isNotEmpty ? text
                         : widget.whenEmpty ?? ''),
-                  ))),
+                  )
+          )),
 
          
           Container(
