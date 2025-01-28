@@ -200,7 +200,7 @@ class _DropDownMultiSelectState<TState> extends State<DropDownMultiSelect<TState
                                 text: x.toString(),
                                 onChange: (isSelected) {
                                   if (isSelected) {
-                                    var ns = widget.selectedValues;
+                                    var ns = widget.selectedValues.toList();
                                     ns.add(x);
                                     widget.onChanged(ns);
                                   } else {
